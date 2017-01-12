@@ -1,0 +1,26 @@
+{
+  "name": "drone-cafe",
+  "version": "1.0.0",
+  "description": "Drone cafe AngularJS/Node.js web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adaptedbee/drone-cafe.git"
+  },
+  "author": "Mikhail Savotikov <adaptedbee@yandex.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adaptedbee/drone-cafe/issues"
+  },
+  "homepage": "https://github.com/adaptedbee/drone-cafe#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.19",
+    "mongoose": "^4.7.6",
+    "socket.io": "^1.7.2"
+  }
+}

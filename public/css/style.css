@@ -1,0 +1,26 @@
+body{
+  position:  relative;
+}
+
+.mainpage__navigation{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mainpage__jumbotron{
+  box-sizing: border-box;
+  height: 100vh;
+  padding-top: 20vh;
+  color: rgba(255,255,255,.9);
+  background-color: green;
+}
+
+.mainpage__footer{
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
