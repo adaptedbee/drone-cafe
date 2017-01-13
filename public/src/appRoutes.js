@@ -4,12 +4,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'views/home.html',
-			controller: 'MainController'
+			templateUrl: 'src/Home/Home.html',
+			controller: 'HomeController'
 		})
 
 		.when('/kitchen', {
-			templateUrl: 'views/kitchen.html',
+			templateUrl: 'src/Kitchen/Kitchen.html',
 			controller: 'KitchenController'
 		})
 
