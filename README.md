@@ -2,6 +2,9 @@
 Drone Cafe
 
 Как запустить:
-1. npm install
-2. bower install
-3. node server.js
+
+```
+npm install
+bower install
+node server.js
+```
