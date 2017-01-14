@@ -4,13 +4,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'src/Home/Home.html',
-			controller: 'HomeController'
+			templateUrl: 'src/UserDashboard/UserDashboard.html',
+			controller: 'UserDashboardController'
 		})
 
 		.when('/kitchen', {
-			templateUrl: 'src/Kitchen/Kitchen.html',
-			controller: 'KitchenController'
+			templateUrl: 'src/CookDashboard/CookDashboard.html',
+			controller: 'CookDashboardController'
 		})
 
 	// $locationProvider.html5Mode(true);

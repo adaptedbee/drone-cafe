@@ -1,4 +1,4 @@
-angular.module('KitchenService', []).factory('Kitchen', ['$http', function($http) {
+angular.module('CookDashboardService', []).factory('CookDashboard', ['$http', function($http) {
 
   return {
         // call to get all nerds

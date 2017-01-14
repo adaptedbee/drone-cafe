@@ -1,1 +1,1 @@
-angular.module('dronecafeApp', ['ngRoute', 'appRoutes', 'HomeCtrl', 'KitchenCtrl', 'KitchenService']);
+angular.module('dronecafeApp', ['ngRoute', 'appRoutes', 'UserDashboardCtrl', 'CookDashboardCtrl', 'CookDashboardService']);

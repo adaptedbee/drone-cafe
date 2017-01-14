@@ -28,7 +28,7 @@ require('./app/routes')(app); // configure our routes
 // start app ===============================================
 // start our app at http://localhost:1337 and shoutout to the user
 app.listen(port, () => {
-  console.log(`Listening port ${port}...`);
+  console.log(`Application started on port ${port}!`);
 });
 
 // expose app
