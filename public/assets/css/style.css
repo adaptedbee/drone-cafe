@@ -1,6 +1,9 @@
 body{
   position:  relative;
 }
+html{
+  // font-family: 'Open Sans', sans-serif;
+}
 
 .mainpage__navigation{
   position: absolute;
@@ -18,15 +21,32 @@ body{
 }
 
 .page--main{
-  padding-top: 20vh;
+  padding-top: 15vh;
   padding-bottom: 20vh;
 
-  background-color: green;
-
-  h1, h5{
-    color: rgba(255,255,255,.9);
-  }
+  // background-color: green;
+  background-image: url('../img/bg1920x1280.jpg');
+  background-size: cover;
+  // background-size: auto 100%;
+  background-position: 0 -70px;
+  // background-position: 0 0;
+  background-repeat: no-repeat;
 }
+
+.mainpage__headline{
+  margin-bottom: 0px;
+
+  font-weight: bold;
+  // text-transform: uppercase;
+}
+.mainpage__subheadline{
+  margin-bottom: 140px;
+
+  // font-weight: bold;
+}
+.mainpage__button{
+}
+
 .mainpage__jumbotron{
 
 }

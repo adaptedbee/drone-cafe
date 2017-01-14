@@ -1,13 +1,9 @@
 <div class="page" data-ng-class="{'page--main': !userLoggedIn}">
 
-  <div class="container" data-ng-if="!userLoggedIn">
-    <h1 class="header center teal-text text-lighten-2">Welcome to Drone Cafe!</h1>
-    <div class="row center">
-      <h5 class="header col s12 light">World-first cafe served by drones</h5>
-    </div>
-    <div class="row center">
-      <button class="btn-large waves-effect waves-light teal lighten-1" data-ng-click="openLoginPopup()">Make an order</button>
-    </div>
+  <div class="container center" data-ng-if="!userLoggedIn">
+    <h1 class="header center teal-text text-lighten-2 mainpage__headline">Welcome to Drone Cafe!</h1>
+    <h5 class="header col s12 light white-text center mainpage__subheadline">World-first cafe served by drones</h5>
+    <button class="btn-large waves-effect waves-light teal lighten-1 mainpage__button z-depth-3" data-ng-click="openLoginPopup()">Make an order</button>
   </div>
 
   <div class="container" data-ng-if="userLoggedIn">
