@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+// const router = express.Router();
+
 // configuration ===========================================
 
 // config files
@@ -13,7 +15,13 @@ var db = require('./config/db');
 const port = process.env.PORT || 1337;
 
 // connect to our mongoDB database
-// mongoose.connect(db.url);
+mongoose.connect(db.url, (err, db) => {
+  if (err) {
+    console.log('Unable to connect to MongoDB server. Error: ', err);
+  } else {
+    console.log('Connected to MongoDB server');
+  }
+});
 
 // parsing
 app.use(bodyParser.json());
@@ -21,6 +29,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // set the static files location
 app.use(express.static(__dirname + '/public'));
+
+// app.use("https://api.mlab.com/api/1/databases/drone-cafe/collections/", router);
 
 // routes ==================================================
 require('./app/routes')(app); // configure our routes

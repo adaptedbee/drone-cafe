@@ -7,6 +7,7 @@ const OrderSchema = new Schema({
   userId: mongoose.Schema.ObjectId,
   dishes: [{
     dishId: mongoose.Schema.ObjectId,
+    name: String,
     status: String
   }]
 });

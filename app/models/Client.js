@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const ClientSchema = new Schema({
   name: String,
   email: String,
-  account: Number
+  balance: Number
 });
 
 const Client = mongoose.model('Client', ClientSchema, 'clients');

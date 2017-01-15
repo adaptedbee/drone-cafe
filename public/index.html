@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="DroneCafeApp">
 <head>
   <meta charset="UTF-8">
   <title>Drone Cafe</title>
@@ -17,8 +17,10 @@
   <!-- JS -->
   <script src="./assets/bower_components/angular/angular.min.js"></script>
   <script src="./assets/bower_components/angular-route/angular-route.min.js"></script>
+  <script src="./assets/bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="./assets/bower_components/restangular/dist/restangular.min.js"></script>
 </head>
-<body ng-app="dronecafeApp" ng-controller="CookDashboardController">
+<body>
 
   <nav class="mainpage__navigation">
     <div class="container">
@@ -36,10 +38,6 @@
 
   <footer class="page-footer mainpage__footer">
     <div class="footer-copyright">
-      <!-- <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div> -->
-
       <div class="container">
             &copy; 2017 Mikhail Savotikov
             <span class="right">Made with <i class="tiny material-icons">favorite</i> in Netology</span>
@@ -77,11 +75,13 @@
   <script src="./assets/bower_components/materialize/dist/js/materialize.min.js"></script>
 
   <!-- ANGULAR CUSTOM -->
+  <!-- <script src="./src/app.js"></script> -->
+  <!-- <script src="./src/appRoutes.js"></script> -->
+  <script src="./src/DroneCafeApp.js"></script>
   <script src="./src/UserDashboard/UserDashboardCtrl.js"></script>
+  <script src="./src/UserDashboard/UserDashboardService.js"></script>
   <script src="./src/CookDashboard/CookDashboardCtrl.js"></script>
   <script src="./src/CookDashboard/CookDashboardService.js"></script>
-  <script src="./src/appRoutes.js"></script>
-  <script src="./src/app.js"></script>
   <script src="./assets/js/main.js"></script>
 </body>
 </html>

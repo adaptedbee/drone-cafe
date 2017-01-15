@@ -1,9 +1,25 @@
-angular.module('CookDashboardCtrl', []).controller('CookDashboardController', function($scope) {
+'use strict';
 
-	$scope.tagline = 'Cook Dashboard';
+droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardService) {
 
-  $scope.orderedDishes = ['Cheeseburger', 'Apple', 'Potato', 'Tea'];
+  CookDashboardService.getOrderedDishes().then(function(data) {
+      $scope.dishesInOrder = data.data[0].dishes;
+      $scope.orderedDishes = $scope.dishesInOrder.filter(function(item){
+          return item.status == 'Ordered';
+      });
+      console.log($scope.orderedDishes);
+  }, function(error) {
+      console.log('Error: ' + error);
+  });
 
-  $scope.cookingDishes = ['Coffee', 'Chicken', 'Pear', 'Bread'];
+  CookDashboardService.getCookingDishes().then(function(data) {
+      $scope.dishesInOrder = data.data[0].dishes;
+      $scope.cookingDishes = $scope.dishesInOrder.filter(function(item){
+          return item.status == 'Cooking';
+      });
+      console.log($scope.cookingDishes);
+  }, function(error) {
+      console.log('Error: ' + error);
+  });
 
 });

@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('UserDashboardCtrl', []).controller('UserDashboardController', function($scope) {
+droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardService) {
 
-	// $scope.tagline = 'User Dashboard';
   $scope.userLoggedIn = false;
 
   $scope.openLoginPopup = function(){
@@ -12,36 +11,22 @@ angular.module('UserDashboardCtrl', []).controller('UserDashboardController', fu
 
   $scope.logIn = function() {
       $('#loginPopup').modal('close');
-      // $scope.userLoggedIn = true;
-      $scope.userLoggedIn = !$scope.userLoggedIn;
+      $scope.userLoggedIn = true;
   };
 
-  $scope.user = {
-    name: "John Doe",
-    balance: 50
-  };
+  UserDashboardService.getUserInfo().then(function(data) {
+      $scope.users = data.data;
+      $scope.user = $scope.users[0];
+  }, function(error) {
+      console.log('Error: ' + error);
+  });
 
-  $scope.userOrderedDishes = [
-    {
-      name: 'Pizza',
-      status: 'Ordered'
-    },
-    {
-      name: 'Hamburger',
-      status: 'Cooking'
-    },
-    {
-      name: 'Pie',
-      status: 'In delivery'
-    },
-    {
-      name: 'Cola',
-      status: 'In trouble'
-    },
-    {
-      name: 'Pepsi',
-      status: 'Served'
-    }
-  ];
+  UserDashboardService.getUserOrder().then(function(data) {
+      $scope.orders = data.data;
+      $scope.userOrder = $scope.orders[0];
+      $scope.userOrderedDishes = $scope.userOrder.dishes;
+  }, function(error) {
+      console.log('Error: ' + error);
+  });
 
 });
