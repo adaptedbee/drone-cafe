@@ -7,7 +7,7 @@
         <h3>Ordered dishes</h3>
         <ul class="collection">
           <li class="collection-item" ng-repeat="dish in orderedDishes">
-            <div>{{dish.name}}<button class="right-align waves-effect waves-light btn" ng-click="startCooking()">Start Cooking</button></div>
+            <div class="cookpage__list-item">{{dish.name}}<button class="right-align waves-effect waves-light btn cookpage__list-button" ng-click="startCooking()">Start Cooking</button></div>
           </li>
         </ul>
       </div>
@@ -15,7 +15,7 @@
         <h3>Cooking dishes</h3>
         <ul class="collection">
           <li class="collection-item" ng-repeat="dish in cookingDishes">
-            <div>{{dish.name}}<button class="right-align waves-effect waves-light btn" ng-click="finishCooking()">Done!</button></div>
+            <div class="cookpage__list-item">{{dish.name}}<button class="right-align waves-effect waves-light btn cookpage__list-button" ng-click="finishCooking()">Done!</button></div>
           </li>
         </ul>
       </div>
