@@ -7,7 +7,7 @@ droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardServi
       $scope.orderedDishes = $scope.dishesInOrder.filter(function(item){
           return item.status == 'Ordered';
       });
-      console.log($scope.orderedDishes);
+      // console.log($scope.orderedDishes);
   }, function(error) {
       console.log('Error: ' + error);
   });
@@ -17,7 +17,7 @@ droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardServi
       $scope.cookingDishes = $scope.dishesInOrder.filter(function(item){
           return item.status == 'Cooking';
       });
-      console.log($scope.cookingDishes);
+      // console.log($scope.cookingDishes);
   }, function(error) {
       console.log('Error: ' + error);
   });
