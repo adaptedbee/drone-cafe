@@ -17,11 +17,9 @@ const DishSchema = new Schema({
 
 const OrderSchema = new Schema({
   userId: mongoose.Schema.ObjectId,
-  dishes: [{
-    dishId: mongoose.Schema.ObjectId,
-    name: String,
-    status: String
-  }]
+  dishId: mongoose.Schema.ObjectId,
+  name: String,
+  status: String
 });
 
 const Client = mongoose.model('Client', ClientSchema, 'clients');

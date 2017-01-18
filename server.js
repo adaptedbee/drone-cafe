@@ -56,11 +56,24 @@ router.route('/clients')
 
 router.route('/orders')
   .get((req, res) => {
-    model.Order.find((err, clients) => {
+
+    let searchQuery = {};
+
+    // if ((req.query.userId !== null) && (req.query.userId !== undefined)) {
+    //   let userId = req.query.userId;
+    //   searchQuery.userId = userId;
+    // };
+
+    if ((req.query.status !== null) && (req.query.status !== undefined)) {
+      let status = req.query.status;
+      searchQuery.status = status;
+    };
+
+    model.Order.find(searchQuery, (err, orders) => {
       if (err){
         res.send(err);
       } else {
-        res.json(clients);
+        res.json(orders);
       };
     });
   });

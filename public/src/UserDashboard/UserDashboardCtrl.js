@@ -21,10 +21,8 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
       console.log('Error: ' + error);
   });
 
-  UserDashboardService.getUserOrder().then(function(data) {
-      $scope.orders = data.data;
-      $scope.userOrder = $scope.orders[0];
-      $scope.userOrderedDishes = $scope.userOrder.dishes;
+  UserDashboardService.getUserOrders().then(function(data) {
+      $scope.userOrderedDishes = data.data;
   }, function(error) {
       console.log('Error: ' + error);
   });

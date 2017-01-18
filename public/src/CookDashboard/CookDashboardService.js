@@ -4,14 +4,14 @@ angular
 
     return {
 
-        getOrderedDishes: function() {
-            return $http.get('/api/orders');
-            // {status:'Ordered'}
-        },
-
-        getCookingDishes: function() {
-            return $http.get('/api/orders');
-            // {status:'Cooking'}
+        getDishes: function(dishStatus) {
+            let config = {
+                params: {
+                    // userId: '777',
+                    status: dishStatus
+                }
+            };
+            return $http.get('/api/orders', config);
         }
 
     }
