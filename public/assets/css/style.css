@@ -72,3 +72,7 @@ html{
 .cookpage__list-button{
   float: right;
 }
+
+.login-popup{
+  width: 400px;
+}
