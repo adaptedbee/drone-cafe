@@ -44,4 +44,9 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
     });
   };
 
+  $scope.openDishesPopup = function(){
+    $('#dishesPopup').modal();
+    $('#dishesPopup').modal('open');
+  };
+
 });
