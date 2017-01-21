@@ -18,7 +18,6 @@ const DishSchema = new Schema({
 const OrderSchema = new Schema({
   userId: mongoose.Schema.ObjectId,
   dishId: mongoose.Schema.ObjectId,
-  name: String,
   status: String
 });
 
