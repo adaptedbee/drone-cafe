@@ -14,4 +14,25 @@ droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardServi
       console.log('Error: ' + error);
   });
 
+
+  $scope.startCooking = function(orderid){
+    console.log(orderid);
+
+    CookDashboardService.updateOrderStatus(orderid, 'Cooking').then(function(data) {
+        console.log(data.data);
+
+        // update orders lists
+    });
+  };
+
+  $scope.finishCooking = function(orderid){
+    console.log(orderid);
+
+    CookDashboardService.updateOrderStatus(orderid, 'In delivery').then(function(data) {
+        console.log(data.data);
+
+        // update orders lists
+    });
+  };
+
 });

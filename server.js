@@ -164,6 +164,24 @@ router.route('/orders')
     });
   });
 
+router.route('/orders/:order_id')
+  .put((req, res) => {
+    model.Order.findById(req.params.order_id, (err, order) => {
+      if (err) {
+        res.send(err);
+      } else {
+        order.status = req.body.status;
+        order.save((err) => {
+          if (err) {
+            res.send(err);
+          } else {
+            res.json({ message: 'Order updated!' });
+          };
+        });
+      };
+    });
+  });
+
 router.route('/dishes')
   .get((req, res) => {
     model.Dish.find((err, dishes) => {

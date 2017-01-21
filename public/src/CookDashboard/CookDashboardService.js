@@ -7,11 +7,22 @@ angular
         getDishes: function(dishStatus) {
             let config = {
                 params: {
-                    // userId: '777',
                     status: dishStatus
                 }
             };
             return $http.get('/api/orders', config);
+        },
+
+        updateOrderStatus: function(orderid, newStatus){
+            let orderData = {
+                status: newStatus
+            };
+
+            return $http({
+                method: 'PUT',
+                url: '/api/orders/' + orderid,
+                data: orderData
+            });
         }
 
     }
