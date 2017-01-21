@@ -32,7 +32,7 @@
         <div class="col s4" ng-repeat="dish in dishes">
           <div class="card small">
             <div class="card-image">
-              <img src={{dish.image}}>
+              <img src="{{dish.image}}">
               <span class="card-title">{{dish.title}}</span>
             </div>
             <div class="card-content">
@@ -41,11 +41,9 @@
                 <div class="col s6"><strong>Rating:</strong> {{dish.rating}}</div>
                 <div class="col s6"><strong>Price:</strong> {{dish.price}}</div>
               </div>
-              <!-- <p>Rating: {{dish.rating}}</p> -->
-              <!-- <p>Price {{dish.price}}</p> -->
             </div>
             <div class="card-action">
-              <button class="waves-effect waves-light btn" data-ng-click="addDishToOrder()">Add to order</button>
+              <button class="waves-effect waves-light btn" data-ng-click="addDishToOrder(dish._id, dish.price)">Add to order</button>
             </div>
           </div>
         </div>

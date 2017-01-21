@@ -50,6 +50,19 @@ angular
 
         getDishesList: function() {
             return $http.get('/api/dishes');
+        },
+
+        createNewOrder: function(userid, dishid){
+            let orderData = {
+                userId: userid,
+                dishId: dishid
+            };
+
+            return $http({
+                method: 'POST',
+                url: '/api/orders',
+                data: orderData
+            });
         }
     }
 

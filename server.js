@@ -149,6 +149,19 @@ router.route('/orders')
         res.json(orders);
       };
     });
+  })
+  .post((req, res) => {
+    const newOrder = new model.Order();
+    newOrder.userId = mongoose.Types.ObjectId(req.body.userId);
+    newOrder.dishId = mongoose.Types.ObjectId(req.body.dishId);
+    newOrder.status = 'Ordered';
+    newOrder.save((err) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json({ message: 'Order created!' });
+      }
+    });
   });
 
 router.route('/dishes')
