@@ -61,7 +61,6 @@ router.route('/clients')
       searchQuery.email = email;
     };
 
-    console.log(searchQuery);
     model.Client.find(searchQuery, (err, clients) => {
       if (err){
         res.send(err);
@@ -105,19 +104,45 @@ router.route('/clients/:client_id')
 router.route('/orders')
   .get((req, res) => {
 
-    let searchQuery = {};
+    let matchQuery = {
+      $match: {
+      }
+    };
 
     if ((req.query.userId !== null) && (req.query.userId !== undefined)) {
       let userId = req.query.userId;
-      searchQuery.userId = userId;
+      matchQuery.$match["userId"] = mongoose.Types.ObjectId(userId);
     };
 
     if ((req.query.status !== null) && (req.query.status !== undefined)) {
       let status = req.query.status;
-      searchQuery.status = status;
+
+      matchQuery.$match["status"] = status;
     };
 
-    model.Order.find(searchQuery, (err, orders) => {
+    // console.log(matchQuery);
+    model.Order.aggregate({
+      $lookup: {
+        "from" : "dishes",
+          "localField" : "dishId",
+          "foreignField" : "_id",
+          "as" : "dish"
+      }
+    },
+    {
+      $unwind: "$dish"
+    },
+    {
+      $project: {
+          "_id": 1,
+        "userId": 1,
+        "dishId": 1,
+        "status": 1,
+        "dishName": "$dish.title"
+      }
+    },
+    matchQuery)
+    .exec((err, orders) => {
       if (err){
         res.send(err);
       } else {

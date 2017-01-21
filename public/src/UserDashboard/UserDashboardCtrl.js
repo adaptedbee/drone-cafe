@@ -30,6 +30,9 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
 
           return UserDashboardService.getUserOrders($scope.user._id)
       }).then(function(data) {
+
+          console.log('dishes');
+          console.log(data.data);
           if(data.data.length !== undefined) {
             $scope.userOrderedDishes = data.data;
           };

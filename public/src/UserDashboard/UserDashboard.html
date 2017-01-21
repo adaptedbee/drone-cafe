@@ -18,7 +18,7 @@
         <h3>Your order</h3>
         <ul class="collection">
           <li class="collection-item" ng-repeat="dish in userOrderedDishes">
-            <div>{{dish.name}}<span class="secondary-content">{{dish.status}}</span></div>
+            <div>{{dish.dishName}}<span class="secondary-content">{{dish.status}}</span></div>
           </li>
         </ul>
         <button class="waves-effect waves-light btn" data-ng-click="openDishesPopup()">Add dishes</button>
