@@ -48,12 +48,39 @@ router.get('/', (req, res) => {
 
 router.route('/clients')
   .get((req, res) => {
-    model.Client.find((err, clients) => {
+
+    let searchQuery = {};
+
+    if ((req.query.name !== null) && (req.query.name !== undefined)) {
+      let name = req.query.name;
+      searchQuery.name = name;
+    };
+
+    if ((req.query.email !== null) && (req.query.email !== undefined)) {
+      let email = req.query.email;
+      searchQuery.email = email;
+    };
+
+    console.log(searchQuery);
+    model.Client.find(searchQuery, (err, clients) => {
       if (err){
         res.send(err);
       } else {
         res.json(clients);
       };
+    });
+  })
+  .post((req, res) => {
+    const newClient = new model.Client();
+    newClient.name = req.body.name;
+    newClient.email = req.body.email;
+    newClient.balance = 100;
+    newClient.save((err) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json({ message: 'Client created!' });
+      }
     });
   });
 
@@ -82,9 +109,7 @@ router.route('/orders')
 
     if ((req.query.userId !== null) && (req.query.userId !== undefined)) {
       let userId = req.query.userId;
-      // searchQuery.userId = mongoose.Types.ObjectId(userId);
       searchQuery.userId = userId;
-      console.log(searchQuery);
     };
 
     if ((req.query.status !== null) && (req.query.status !== undefined)) {
@@ -92,7 +117,6 @@ router.route('/orders')
       searchQuery.status = status;
     };
 
-    // {userId: mongoose.Types.ObjectId('587a7663f36d284ed58aa8f0')}
     model.Order.find(searchQuery, (err, orders) => {
       if (err){
         res.send(err);

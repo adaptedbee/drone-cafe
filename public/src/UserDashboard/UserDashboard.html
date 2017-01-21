@@ -33,13 +33,13 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <input id="user_name" type="text" class="validate">
+              <input id="user_name" type="text" class="validate" data-ng-model="newUser.name">
               <label for="first_name">Name</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="user_email" type="email" class="validate">
+              <input id="user_email" type="email" class="validate" data-ng-model="newUser.email">
               <label for="email">Email</label>
             </div>
           </div>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button class="waves-effect waves-light btn" ng-click="logIn()">Log in</button>
+      <button class="waves-effect waves-light btn" ng-click="logIn(newUser)">Log in</button>
     </div>
   </div>
 </div>

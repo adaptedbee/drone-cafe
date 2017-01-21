@@ -4,17 +4,27 @@ angular
 
     return {
 
-        getUserInfo: function() {
-            return $http.get('/api/clients');
-        },
-
-        getUserOrders: function(userid) {
+        getUserInfo: function(user) {
             let config = {
                 params: {
-                    userId: userid
+                    name: user.name,
+                    email: user.email
                 }
             };
-            return $http.get('/api/orders', config);
+            return $http.get('/api/clients', config);
+        },
+
+        createNewUser: function(user) {
+            let userData = {
+                name: user.name,
+                email: user.email
+            };
+
+            return $http({
+                method: 'POST',
+                url: '/api/clients',
+                data: userData
+            });
         },
 
         updateUserBalance: function(userid, newbalance) {
@@ -27,6 +37,15 @@ angular
                 url: '/api/clients/' + userid,
                 data: userData
             });
+        },
+
+        getUserOrders: function(userid) {
+            let config = {
+                params: {
+                    userId: userid
+                }
+            };
+            return $http.get('/api/orders', config);
         }
     }
 
