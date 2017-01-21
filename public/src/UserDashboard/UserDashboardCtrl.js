@@ -25,4 +25,12 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
       };
   });
 
+  $scope.addFunds = function(){
+    $scope.user.balance = $scope.user.balance + 100;
+
+    UserDashboardService.updateUserBalance($scope.user._id, $scope.user.balance).then(function(data) {
+        // console.log(data.data);
+    });
+  };
+
 });

@@ -22,6 +22,9 @@ var dbConfig = require('./config/db');
 var dbConnectionOptions = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 
+// use native ES6 promises instead of mpromise
+mongoose.Promise = global.Promise;
+
 // connect to our mongoDB database
 mongoose.connect(dbConfig.url, dbConnectionOptions, (error, database) => {
   if (error) {
@@ -50,6 +53,24 @@ router.route('/clients')
         res.send(err);
       } else {
         res.json(clients);
+      };
+    });
+  });
+
+router.route('/clients/:client_id')
+  .put((req, res) => {
+    model.Client.findById(req.params.client_id, (err, client) => {
+      if (err) {
+        res.send(err);
+      } else {
+        client.balance = req.body.balance;
+        client.save((err) => {
+          if (err) {
+            res.send(err);
+          } else {
+            res.json({ message: 'Client updated!' });
+          };
+        });
       };
     });
   });
