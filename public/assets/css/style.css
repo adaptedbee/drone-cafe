@@ -76,3 +76,7 @@ html{
 .login-popup{
   width: 400px;
 }
+
+.card.small{
+  // height: 400px;
+}

@@ -50,10 +50,9 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
 
   $scope.showDishes = function(){
     $scope.dishesDisplayed = true;
-    console.log('dishes displayed' + $scope.dishesDisplayed);
 
     UserDashboardService.getDishesList().then(function(data) {
-        console.log(data.data);
+        // console.log(data.data);
 
         $scope.dishes = data.data;
     });
