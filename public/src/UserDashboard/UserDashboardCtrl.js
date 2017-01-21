@@ -3,6 +3,8 @@
 droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardService) {
 
   $scope.userLoggedIn = false;
+  $scope.dishesDisplayed = false;
+  $scope.dishes = [];
 
   $scope.openLoginPopup = function(){
     $('#loginPopup').modal();
@@ -16,12 +18,12 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
       $scope.user = user;
 
       UserDashboardService.getUserInfo($scope.user).then(function(data) {
-          console.log(data.data);
+          // console.log(data.data);
 
           if(data.data.length == 0) {
             $scope.user.balance = 100;
             UserDashboardService.createNewUser($scope.user).then(function(data) {
-                console.log(data.data);
+                // console.log(data.data);
             });
           } else {
             $scope.users = data.data;
@@ -31,8 +33,7 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
           return UserDashboardService.getUserOrders($scope.user._id)
       }).then(function(data) {
 
-          console.log('dishes');
-          console.log(data.data);
+          // console.log(data.data);
           if(data.data.length !== undefined) {
             $scope.userOrderedDishes = data.data;
           };
@@ -47,9 +48,15 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
     });
   };
 
-  $scope.openDishesPopup = function(){
-    $('#dishesPopup').modal();
-    $('#dishesPopup').modal('open');
+  $scope.showDishes = function(){
+    $scope.dishesDisplayed = true;
+    console.log('dishes displayed' + $scope.dishesDisplayed);
+
+    UserDashboardService.getDishesList().then(function(data) {
+        console.log(data.data);
+
+        $scope.dishes = data.data;
+    });
   };
 
 });

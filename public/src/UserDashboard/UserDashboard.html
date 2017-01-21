@@ -21,8 +21,13 @@
             <div>{{dish.dishName}}<span class="secondary-content">{{dish.status}}</span></div>
           </li>
         </ul>
-        <button class="waves-effect waves-light btn" data-ng-click="openDishesPopup()">Add dishes</button>
+        <button class="waves-effect waves-light btn" data-ng-click="showDishes()">Add dishes</button>
       </div>
+    </div>
+
+    <div class="row" data-ng-if="dishesDisplayed">
+      <h3>Choose dishes</h3>
+      <p ng-repeat="dish in dishes">{{dish.title}}</p>
     </div>
   </div>
 
@@ -51,12 +56,4 @@
     </div>
   </div>
 
-  <div id="dishesPopup" class="modal">
-    <div class="modal-content">
-      <h3>Choose dishes</h3>
-    </div>
-    <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-green btn-flat">Close</button>
-    </div>
-  </div>
 </div>

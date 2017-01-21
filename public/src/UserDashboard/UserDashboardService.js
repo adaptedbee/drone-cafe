@@ -46,6 +46,10 @@ angular
                 }
             };
             return $http.get('/api/orders', config);
+        },
+
+        getDishesList: function() {
+            return $http.get('/api/dishes');
         }
     }
 

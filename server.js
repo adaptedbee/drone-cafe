@@ -151,6 +151,17 @@ router.route('/orders')
     });
   });
 
+router.route('/dishes')
+  .get((req, res) => {
+    model.Dish.find((err, dishes) => {
+      if (err){
+        res.send(err);
+      } else {
+        res.json(dishes);
+      };
+    });
+  });
+
 // start app ===============================================
 
 // add router
