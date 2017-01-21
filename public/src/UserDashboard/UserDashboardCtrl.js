@@ -17,14 +17,12 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
   UserDashboardService.getUserInfo().then(function(data) {
       $scope.users = data.data;
       $scope.user = $scope.users[0];
-  }, function(error) {
-      console.log('Error: ' + error);
-  });
 
-  UserDashboardService.getUserOrders().then(function(data) {
-      $scope.userOrderedDishes = data.data;
-  }, function(error) {
-      console.log('Error: ' + error);
+      return UserDashboardService.getUserOrders($scope.user._id)
+  }).then(function(data) {
+      if(data.data.length !== undefined) {
+        $scope.userOrderedDishes = data.data;
+      };
   });
 
 });

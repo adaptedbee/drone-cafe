@@ -59,16 +59,19 @@ router.route('/orders')
 
     let searchQuery = {};
 
-    // if ((req.query.userId !== null) && (req.query.userId !== undefined)) {
-    //   let userId = req.query.userId;
-    //   searchQuery.userId = userId;
-    // };
+    if ((req.query.userId !== null) && (req.query.userId !== undefined)) {
+      let userId = req.query.userId;
+      // searchQuery.userId = mongoose.Types.ObjectId(userId);
+      searchQuery.userId = userId;
+      console.log(searchQuery);
+    };
 
     if ((req.query.status !== null) && (req.query.status !== undefined)) {
       let status = req.query.status;
       searchQuery.status = status;
     };
 
+    // {userId: mongoose.Types.ObjectId('587a7663f36d284ed58aa8f0')}
     model.Order.find(searchQuery, (err, orders) => {
       if (err){
         res.send(err);

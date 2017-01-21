@@ -8,10 +8,10 @@ angular
             return $http.get('/api/clients');
         },
 
-        getUserOrders: function() {
+        getUserOrders: function(userid) {
             let config = {
                 params: {
-                    // userId: 777
+                    userId: userid
                 }
             };
             return $http.get('/api/orders', config);
