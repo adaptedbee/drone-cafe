@@ -1,5 +1,3 @@
-'use strict';
-
 droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardService) {
 
   $scope.userLoggedIn = false;

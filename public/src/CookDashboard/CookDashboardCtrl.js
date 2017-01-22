@@ -1,5 +1,3 @@
-'use strict';
-
 droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardService) {
 
   CookDashboardService.getDishes('Ordered').then(function(data) {
