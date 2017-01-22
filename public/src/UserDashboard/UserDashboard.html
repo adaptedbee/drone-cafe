@@ -43,7 +43,8 @@
               </div>
             </div>
             <div class="card-action">
-              <button class="waves-effect waves-light btn" data-ng-click="addDishToOrder(dish._id, dish.price)">Add to order</button>
+              <button class="waves-effect waves-light btn" data-ng-if="dish.price <= user.balance" data-ng-click="addDishToOrder(dish._id, dish.price)">Add to order</button>
+              <div class="add-message" data-ng-if="dish.price > user.balance">Add <span class="red-text">{{dish.price - user.balance}} galactic credits</span> to your balance</div>
             </div>
           </div>
         </div>

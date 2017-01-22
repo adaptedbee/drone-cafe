@@ -80,3 +80,7 @@ html{
 .card.small{
   height: 400px;
 }
+
+.add-message{
+  font-weight: bold;
+}
