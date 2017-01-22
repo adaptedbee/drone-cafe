@@ -17,7 +17,7 @@
       <div class="col s6">
         <h3>Your order</h3>
         <ul class="collection">
-          <li class="collection-item" ng-repeat="dish in userOrderedDishes">
+          <li class="collection-item" data-ng-repeat="dish in userOrderedDishes">
             <div>{{dish.dishName}}<span class="secondary-content">{{dish.status}}</span></div>
           </li>
         </ul>
@@ -29,14 +29,14 @@
       <h3>Choose dishes</h3>
 
       <div class="row">
-        <div class="col s4" ng-repeat="dish in dishes">
+        <div class="col s4" data-ng-repeat="dish in dishes">
           <div class="card small">
             <div class="card-image">
               <img src="{{dish.image}}">
               <span class="card-title">{{dish.title}}</span>
             </div>
             <div class="card-content">
-              <p><strong>Ingredients:</strong> <span ng-repeat="ingredient in dish.ingredients track by $index">{{ingredient}}, </span></p>
+              <p><strong>Ingredients:</strong> <span data-ng-repeat="ingredient in dish.ingredients track by $index">{{ingredient}}, </span></p>
               <div class="row">
                 <div class="col s6"><strong>Rating:</strong> {{dish.rating}}</div>
                 <div class="col s6"><strong>Price:</strong> {{dish.price}}</div>
@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button class="waves-effect waves-light btn" ng-click="logIn(newUser)">Log in</button>
+      <button class="waves-effect waves-light btn" data-ng-click="logIn(newUser)">Log in</button>
     </div>
   </div>
 

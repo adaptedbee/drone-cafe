@@ -6,16 +6,16 @@
       <div class="col s6">
         <h3>Ordered dishes</h3>
         <ul class="collection">
-          <li class="collection-item" ng-repeat="order in orderedDishes">
-            <div class="cookpage__list-item">{{order.dishName}}<button class="right-align waves-effect waves-light btn cookpage__list-button" ng-click="startCooking(order._id)">Start Cooking</button></div>
+          <li class="collection-item" data-ng-repeat="order in orderedDishes">
+            <div class="cookpage__list-item">{{order.dishName}}<button class="right-align waves-effect waves-light btn cookpage__list-button" data-ng-click="startCooking(order._id)">Start Cooking</button></div>
           </li>
         </ul>
       </div>
       <div class="col s6">
         <h3>Cooking dishes</h3>
         <ul class="collection">
-          <li class="collection-item" ng-repeat="order in cookingDishes">
-            <div class="cookpage__list-item">{{order.dishName}}<button class="right-align waves-effect waves-light btn cookpage__list-button" ng-click="finishCooking(order._id)">Done!</button></div>
+          <li class="collection-item" data-ng-repeat="order in cookingDishes">
+            <div class="cookpage__list-item">{{order.dishName}}<button class="right-align waves-effect waves-light btn cookpage__list-button" data-ng-click="finishCooking(order._id)">Done!</button></div>
           </li>
         </ul>
       </div>
