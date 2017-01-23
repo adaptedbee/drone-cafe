@@ -25,7 +25,6 @@ public/                        --> клиент на AngularJS
     bower_components/          --> пакеты, установленные через bower
     css/                       --> файлы стилей
     img/                       --> файлы картинок
-    js/                        --> файлы скриптов
   src/                         --> папка angular-приложения
     CookDashboard/             --> компонент для интерфейса повара
       CookDashboard.html       --> файл представления
