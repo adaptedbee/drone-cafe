@@ -36,15 +36,17 @@
               <span class="card-title">{{dish.title}}</span>
             </div>
             <div class="card-content">
-              <p><strong>Ingredients:</strong> <span data-ng-repeat="ingredient in dish.ingredients track by $index">{{ingredient}}, </span></p>
-              <div class="row">
-                <div class="col s6"><strong>Rating:</strong> {{dish.rating}}</div>
-                <div class="col s6"><strong>Price:</strong> {{dish.price}}</div>
-              </div>
+              <span class="activator grey-text text-darken-4" title="Click to show ingredients"><i class="material-icons right">more_vert</i></span>
+              <p><strong>Rating:</strong> {{dish.rating}}</p>
+              <p><strong>Price:</strong> {{dish.price}} galactic credits</p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Ingredients:<i class="material-icons right">close</i></span>
+              <p>{{makeIngredientsList(dish.ingredients)}}</p>
             </div>
             <div class="card-action">
               <button class="waves-effect waves-light btn" data-ng-if="dish.price <= user.balance" data-ng-click="addDishToOrder(dish._id, dish.price)">Add to order</button>
-              <div class="add-message" data-ng-if="dish.price > user.balance">Add <span class="red-text">{{dish.price - user.balance}} galactic credits</span> to your balance</div>
+              <div class="add-message" data-ng-if="dish.price > user.balance">Add <span class="red-text">{{dish.price - user.balance}} galactic credits</span> to balance</div>
             </div>
           </div>
         </div>

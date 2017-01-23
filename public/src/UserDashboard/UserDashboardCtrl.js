@@ -57,7 +57,6 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
   };
 
   $scope.addDishToOrder = function(dishid, dishprice){
-
     $scope.user.balance = $scope.user.balance - dishprice;
 
     UserDashboardService.updateUserBalance($scope.user._id, $scope.user.balance).then(function(data) {
@@ -71,6 +70,16 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
 
     // get user info again
     // get user orders again
+  };
+
+  $scope.makeIngredientsList = function(ingredientsArray){
+    let ingredientsList = ingredientsArray.reduce(function(string, current) {
+      return string + current + ", ";
+    }, "");
+
+    ingredientsList = ingredientsList[0].toUpperCase() + ingredientsList.substr(1, ingredientsList.length - 3) + ".";
+
+    return ingredientsList;
   };
 
 });

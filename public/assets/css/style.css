@@ -77,10 +77,24 @@ html{
   width: 400px;
 }
 
+.card-image .card-title{
+  text-shadow: 1px 1px 2px black;
+}
+
 .card.small{
-  height: 400px;
+  // height: 400px;
+  height: 335px;
+}
+
+.card.small .card-image{
+  max-height: 180px;
+}
+
+.activator{
+  cursor: pointer;
 }
 
 .add-message{
   font-weight: bold;
+  line-height: 36px;
 }
