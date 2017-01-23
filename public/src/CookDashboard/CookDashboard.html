@@ -7,7 +7,10 @@
         <h3>Ordered dishes</h3>
         <ul class="collection">
           <li class="collection-item" data-ng-repeat="order in orderedDishes">
-            <div class="cookpage__list-item">{{order.dishName}}<button class="right-align waves-effect waves-light btn cookpage__list-button" data-ng-click="startCooking(order._id)">Start Cooking</button></div>
+            <div class="cookpage__list-item clearfix">
+              <div class="cookpage__list-item-name cookpage__list-item-name--ordered">{{order.dishName}}</div>
+              <button class="right-align waves-effect waves-light btn cookpage__list-button" data-ng-click="startCooking(order._id)">Start Cooking</button>
+            </div>
           </li>
         </ul>
       </div>
@@ -15,7 +18,10 @@
         <h3>Cooking dishes</h3>
         <ul class="collection">
           <li class="collection-item" data-ng-repeat="order in cookingDishes">
-            <div class="cookpage__list-item">{{order.dishName}}<button class="right-align waves-effect waves-light btn cookpage__list-button" data-ng-click="finishCooking(order._id)">Done!</button></div>
+            <div class="cookpage__list-item clearfix">
+              <div class="cookpage__list-item-name cookpage__list-item-name--cooking">{{order.dishName}}</div>
+              <button class="right-align waves-effect waves-light btn cookpage__list-button" data-ng-click="finishCooking(order._id)">Done!</button>
+            </div>
           </li>
         </ul>
       </div>

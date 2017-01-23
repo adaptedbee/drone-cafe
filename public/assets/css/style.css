@@ -5,6 +5,12 @@ html{
   // font-family: 'Open Sans', sans-serif;
 }
 
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .mainpage__navigation{
   position: absolute;
   top: 0;
@@ -66,11 +72,33 @@ html{
   width: 100%;
 }
 
+.userpage__list-item{
+
+}
+.userpage__list-item-name{
+  width: 80%;
+  float: left;
+}
+
 .cookpage__list-item{
-  line-height: 2.5rem;
+  // line-height: 2.5rem;
+  min-height: 2.5rem;
 }
 .cookpage__list-button{
   float: right;
+}
+.cookpage__list-item-name{
+  width: 50%;
+  float: left;
+
+  box-sizing: border-box;
+  padding-top: 0.5rem;
+}
+.cookpage__list-item-name--ordered{
+  width: 50%;
+}
+.cookpage__list-item-name--cooking{
+  width: 70%;
 }
 
 .login-popup{
