@@ -6,6 +6,8 @@ const io = require('socket.io');
 
 const mongoose = require('mongoose');
 
+const drone = require('netology-fake-drone-api');
+
 const app = express();
 const server = http.createServer(app);
 const socketIO = io(server);
@@ -181,6 +183,33 @@ router.route('/orders/:order_id')
             res.send(err);
           } else {
             res.json({ message: 'Order updated!' });
+
+            if (order.status == 'In delivery') {
+              drone
+                .deliver()
+                .then(() => {
+                  // console.log('Доставлено');
+                  order.status = 'Served';
+                  order.save((err) => {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      socketIO.emit('order status changed', order);
+                    }
+                  });
+                })
+                .catch(() => {
+                  // console.log('Возникли сложности');
+                  order.status = 'In trouble';
+                  order.save((err) => {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      socketIO.emit('order status changed', order);
+                    }
+                  });
+                });
+            };
           };
         });
       };
