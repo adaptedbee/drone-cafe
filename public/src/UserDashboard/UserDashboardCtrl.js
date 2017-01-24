@@ -77,7 +77,31 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
     return ingredientsList;
   };
 
-  socket.on('new order created', function(order){
+  $scope.orderAgain = function(order){
+    order.status = 'Ordered';
+
+    // $scope.user.balance = $scope.user.balance - dishprice*0.95;
+
+    console.log(order);
+
+    UserDashboardService.updateUserBalance($scope.user._id, $scope.user.balance).then(function(data) {
+        // console.log(data.data);
+    });
+
+    UserDashboardService.updateOrderStatus(order._id, 'Ordered').then(function(data) {
+        // console.log(data.data);
+    });
+  };
+
+  $scope.cancelOrder = function(order, orderIndex){
+    $scope.userOrderedDishes.splice(orderIndex, 1);
+
+    UserDashboardService.deleteOrder(order._id).then(function(data) {
+        // console.log(data.data);
+    });
+  };
+
+  socket.on('new order created', function(){
     // console.log(order);
 
     UserDashboardService.getUserOrders($scope.user._id).then(function(data) {
@@ -98,6 +122,7 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
       }
     };
   });
+
   socket.on('connect_error', function() {
     console.log('Disconnected from server');
     socket.disconnect();

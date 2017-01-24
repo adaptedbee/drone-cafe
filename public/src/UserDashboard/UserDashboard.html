@@ -22,6 +22,10 @@
               <div class="userpage__list-item-name">{{dish.dishName}}</div>
               <span class="secondary-content">{{dish.status}}</span>
             </div>
+            <div class="userpage__list-item clearfix" data-ng-if="dish.status == 'In trouble'">
+              <button class="waves-effect waves-light btn" data-ng-click="orderAgain(dish)">Order again</button>
+              <button class="waves-effect waves-light btn" data-ng-click="cancelOrder(dish, $index)">Cancel</button>
+            </div>
           </li>
         </ul>
         <button class="waves-effect waves-light btn" data-ng-click="showDishes()">Add dishes</button>

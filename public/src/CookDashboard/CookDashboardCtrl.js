@@ -34,7 +34,7 @@ droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardServi
     });
   };
 
-  socket.on('new order created', function(order){
+  socket.on('new order created', function(){
     // console.log(order);
 
     CookDashboardService.getDishes('Ordered').then(function(data) {

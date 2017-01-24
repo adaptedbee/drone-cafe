@@ -184,11 +184,16 @@ router.route('/orders/:order_id')
           } else {
             res.json({ message: 'Order updated!' });
 
+            if (order.status == 'Ordered'){
+              socketIO.emit('new order created');
+              console.log('welcome back');
+            };
+
             if (order.status == 'In delivery') {
               drone
                 .deliver()
                 .then(() => {
-                  // console.log('Доставлено');
+                  console.log('Доставлено');
                   order.status = 'Served';
                   order.save((err) => {
                     if (err) {
@@ -199,7 +204,7 @@ router.route('/orders/:order_id')
                   });
                 })
                 .catch(() => {
-                  // console.log('Возникли сложности');
+                  console.log('Возникли сложности');
                   order.status = 'In trouble';
                   order.save((err) => {
                     if (err) {
@@ -212,6 +217,17 @@ router.route('/orders/:order_id')
             };
           };
         });
+      };
+    });
+  })
+  .delete((req, res) => {
+    model.Order.remove({
+      _id: req.params.orderId
+    }, (err, order) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json({ message: 'Order deleted' });
       };
     });
   });

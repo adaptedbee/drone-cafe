@@ -63,6 +63,30 @@ angular
                 url: '/api/orders',
                 data: orderData
             });
+        },
+
+        updateOrderStatus: function(orderid, newStatus){
+            let orderData = {
+                status: newStatus
+            };
+
+            return $http({
+                method: 'PUT',
+                url: '/api/orders/' + orderid,
+                data: orderData
+            });
+        },
+
+        deleteOrder: function(orderid){
+            let orderData = {
+                orderId: orderid
+            };
+
+            return $http({
+                method: 'DELETE',
+                url: '/api/orders/' + orderid,
+                data: orderData
+            });
         }
     }
 
