@@ -120,7 +120,6 @@ router.route('/orders')
       matchQuery.$match["status"] = status;
     };
 
-    // console.log(matchQuery);
     model.Order.aggregate({
       $lookup: {
         "from" : "dishes",
