@@ -37,6 +37,8 @@ public/                        --> клиент на AngularJS
       UserDashboardService.js  --> файл сервиса
     DroneCafeApp.js            --> главный angular-модуль
   index.html                   --> главная страница приложения
+test/                          --> папка с тестами
+  server-api.test.js           --> тесты для сервера (mocha / chai / supertest)
 .bowerrc                       --> файл настроек для bower
 .gitignore                     --> файл настроек для git
 bower.json                     --> файл конфигурации для bower

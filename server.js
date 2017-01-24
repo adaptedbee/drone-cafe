@@ -49,7 +49,7 @@ const router = express.Router();
 // routes ==================================================
 
 router.get('/', (req, res) => {
-  res.json({ message: 'Welcome to our Drone Cafe app!' });
+  res.status(200).json({"message": "Welcome to our Drone Cafe app!"});
 });
 
 router.route('/clients')
