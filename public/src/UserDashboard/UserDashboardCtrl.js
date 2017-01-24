@@ -56,8 +56,13 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
     });
   };
 
-  $scope.addDishToOrder = function(dishid, dishprice){
+  $scope.addDishToOrder = function(dishid, dishtitle, dishprice){
     $scope.user.balance = $scope.user.balance - dishprice;
+
+    $scope.userOrderedDishes.push({
+      dishName: dishtitle,
+      status: 'Ordered'
+    });
 
     UserDashboardService.updateUserBalance($scope.user._id, $scope.user.balance).then(function(data) {
         // console.log(data.data);
