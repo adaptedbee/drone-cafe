@@ -9,16 +9,21 @@ droneCafeApp.controller('CookDashboardCtrl', function($scope, CookDashboardServi
   });
 
 
-  $scope.startCooking = function(orderid){
-    CookDashboardService.updateOrderStatus(orderid, 'Cooking').then(function(data) {
+  $scope.startCooking = function(order, orderIndex){
+    $scope.orderedDishes.splice(orderIndex, 1);
+    $scope.cookingDishes.push(order);
+
+    CookDashboardService.updateOrderStatus(order._id, 'Cooking').then(function(data) {
         // console.log(data.data);
 
         // update orders lists
     });
   };
 
-  $scope.finishCooking = function(orderid){
-    CookDashboardService.updateOrderStatus(orderid, 'In delivery').then(function(data) {
+  $scope.finishCooking = function(order, orderIndex){
+    $scope.cookingDishes.splice(orderIndex, 1);
+
+    CookDashboardService.updateOrderStatus(order._id, 'In delivery').then(function(data) {
         // console.log(data.data);
 
         // update orders lists
