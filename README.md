@@ -1,6 +1,7 @@
 # Drone Cafe
 
 Дипломный проект курса "Node, Angular и MongoDB: разработка полноценных веб-приложений" "Нетологии".
+Онлайн-версия: [https://adaptedbee-drone-cafe.herokuapp.com/](https://adaptedbee-drone-cafe.herokuapp.com/)
 
 ## Запуск приложения
 
