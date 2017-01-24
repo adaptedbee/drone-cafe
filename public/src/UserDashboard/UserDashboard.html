@@ -61,25 +61,27 @@
     <div class="modal-content">
       <i class="material-icons right modal-close" title="Close">close</i>
       <h4>Log in</h4>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="user_name" type="text" class="validate" data-ng-model="newUser.name">
-              <label for="first_name">Name</label>
-            </div>
+
+      <form name="loginForm" class="col s12" novalidate>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="user_name" type="text" class="validate" data-ng-model="newUser.name" required>
+            <label for="first_name">Name</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="user_email" type="email" class="validate" data-ng-model="newUser.email">
-              <label for="email">Email</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="user_email" type="email" class="validate" data-ng-model="newUser.email" required>
+            <label for="email">Email</label>
           </div>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="waves-effect waves-light btn" data-ng-click="logIn(newUser)">Log in</button>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button type="submit" class="waves-effect waves-light btn right" data-ng-click="logIn(newUser)" data-ng-disabled="loginForm.$invalid">Log in</button>
+          </div>
+        </div>
+      </form>
+
     </div>
   </div>
 
