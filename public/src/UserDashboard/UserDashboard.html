@@ -35,7 +35,7 @@
         <div class="col s4" data-ng-repeat="dish in dishes">
           <div class="card small hoverable">
             <div class="card-image">
-              <img src="{{dish.image}}">
+              <img data-ng-src="{{dish.image}}" alt="{{dish.title}}">
               <span class="card-title">{{dish.title}}</span>
             </div>
             <div class="card-content">
