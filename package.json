@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha -R spec test/*.js",
+    "test": "mocha -R spec test/server-api.test.js && protractor conf.js --verbose",
     "postinstall": "bower install"
   },
   "repository": {

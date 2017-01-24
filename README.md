@@ -16,33 +16,37 @@ node server.js
 ## Структура проекта
 
 ```
-app/                           --> структурные файлы приложения
-  model.js                     --> модели для работы с БД
-config/                        --> конфигурационные файлы приложения
-  db.js                        --> конфигурационный файл для подключения к БД
-node_modules/                  --> пакеты, установленные через npm
-public/                        --> клиент на AngularJS
-  assets/                      --> папка со статическими файлами
-    bower_components/          --> пакеты, установленные через bower
-    css/                       --> файлы стилей
-    img/                       --> файлы картинок
-  src/                         --> папка angular-приложения
-    CookDashboard/             --> компонент для интерфейса повара
-      CookDashboard.html       --> файл представления
-      CookDashboardCtrl.js     --> файл контроллера
-      CookDashboardService.js  --> файл сервиса
-    UserDashboard/             --> компонент для интерфейса клиента
-      UserDashboard.html       --> файл представления
-      UserDashboardCtrl.js     --> файл контроллера
-      UserDashboardService.js  --> файл сервиса
-    DroneCafeApp.js            --> главный angular-модуль
-  index.html                   --> главная страница приложения
-test/                          --> папка с тестами
-  server-api.test.js           --> тесты для сервера (mocha / chai / supertest)
-.bowerrc                       --> файл настроек для bower
-.gitignore                     --> файл настроек для git
-bower.json                     --> файл конфигурации для bower
-package.json                   --> файл конфигурации для npm
-README.md                      --> файл с описанием проекта
-server.js                      --> сервер на Node.js / Express.js / mongoose
+app/                             --> структурные файлы приложения
+  model.js                       --> модели для работы с БД
+config/                          --> конфигурационные файлы приложения
+  db.js                          --> конфигурационный файл для подключения к БД
+node_modules/                    --> пакеты, установленные через npm
+public/                          --> клиент на AngularJS
+  assets/                        --> папка со статическими файлами
+    bower_components/            --> пакеты, установленные через bower
+    css/                         --> файлы стилей
+    img/                         --> файлы картинок
+  src/                           --> папка angular-приложения
+    CookDashboard/               --> компонент для интерфейса повара
+      CookDashboard.html         --> файл представления
+      CookDashboardCtrl.js       --> файл контроллера
+      CookDashboardService.js    --> файл сервиса
+    UserDashboard/               --> компонент для интерфейса клиента
+      UserDashboard.html         --> файл представления
+      UserDashboardCtrl.js       --> файл контроллера
+      UserDashboardService.js    --> файл сервиса
+    DroneCafeApp.js              --> главный angular-модуль
+  index.html                     --> главная страница приложения
+test/                            --> папка с тестами
+  page-objects/                  --> Page Objects для клиентских тестов (protractor / jasmine)
+  dronecafeapp-cookpage-spec.js  --> клиентские тесты (страница повара)
+  dronecafeapp-userpage-spec.js  --> клиентские тесты (страница пользователя)
+  server-api.test.js             --> серверные тесты (mocha / chai / supertest)
+.bowerrc                         --> файл настроек для bower
+.gitignore                       --> файл настроек для git
+bower.json                       --> файл конфигурации для bower
+conf.js                          --> файл конфигурации для protractor
+package.json                     --> файл конфигурации для npm
+README.md                        --> файл с описанием проекта
+server.js                        --> сервер на Node.js / Express.js / mongoose
 ```
