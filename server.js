@@ -1,10 +1,14 @@
 // modules =================================================
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+const http = require('http');
+const io = require('socket.io');
 
 const mongoose = require('mongoose');
 
+const app = express();
+const server = http.createServer(app);
+const socketIO = io(server);
 // configuration ===========================================
 
 // parsing
@@ -159,6 +163,8 @@ router.route('/orders')
         res.send(err);
       } else {
         res.json({ message: 'Order created!' });
+
+        socketIO.emit('new order created');
       }
     });
   });
@@ -198,6 +204,19 @@ router.route('/dishes')
 app.use('/api', router);
 
 // start our app at localhost
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Application started on port ${port}!`);
+});
+
+// socket connection
+socketIO.on('connection', (socket) => {
+  console.log('User connected');
+
+  socket.on('order status changed', (order) => {
+    // console.log(order);
+    socketIO.emit('order status changed', order);
+  });
+  socket.on('disconnect', (message) => {
+    console.log('User left');
+  });
 });

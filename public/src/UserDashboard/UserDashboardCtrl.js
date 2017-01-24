@@ -3,6 +3,7 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
   $scope.userLoggedIn = false;
   $scope.dishesDisplayed = false;
   $scope.dishes = [];
+  let socket = io();
 
   $scope.openLoginPopup = function(){
     $('#loginPopup').modal();
@@ -59,22 +60,13 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
   $scope.addDishToOrder = function(dishid, dishtitle, dishprice){
     $scope.user.balance = $scope.user.balance - dishprice;
 
-    $scope.userOrderedDishes.push({
-      dishName: dishtitle,
-      status: 'Ordered'
-    });
-
     UserDashboardService.updateUserBalance($scope.user._id, $scope.user.balance).then(function(data) {
         // console.log(data.data);
     });
 
-
     UserDashboardService.createNewOrder($scope.user._id, dishid).then(function(data) {
         // console.log(data.data);
     });
-
-    // get user info again
-    // get user orders again
   };
 
   $scope.makeIngredientsList = function(ingredientsArray){
@@ -84,5 +76,31 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
 
     return ingredientsList;
   };
+
+  socket.on('new order created', function(order){
+    // console.log(order);
+
+    UserDashboardService.getUserOrders($scope.user._id).then(function(data) {
+      if(data.data.length !== undefined) {
+        $scope.userOrderedDishes = data.data;
+      };
+    });
+  });
+
+  socket.on('order status changed', function(order){
+    // console.log(order);
+
+    for (let i=0; i<$scope.userOrderedDishes.length; i++){
+      if($scope.userOrderedDishes[i]._id == order._id){
+        $scope.userOrderedDishes[i].status = order.status;
+        $scope.$apply();
+        break;
+      }
+    };
+  });
+  socket.on('connect_error', function() {
+    console.log('Disconnected from server');
+    socket.disconnect();
+  });
 
 });
