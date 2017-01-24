@@ -78,9 +78,7 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
   };
 
   $scope.makeIngredientsList = function(ingredientsArray){
-    let ingredientsList = ingredientsArray.reduce(function(string, current) {
-      return string + current + ", ";
-    }, "");
+    let ingredientsList = ingredientsArray.join(', ');
 
     ingredientsList = ingredientsList[0].toUpperCase() + ingredientsList.substr(1, ingredientsList.length - 3) + ".";
 
