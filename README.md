@@ -1,7 +1,11 @@
 # Drone Cafe
 
 Дипломный проект курса "Node, Angular и MongoDB: разработка полноценных веб-приложений" "Нетологии".
+Задание: [https://bitbucket.org/netology-university/drone-cafe](https://bitbucket.org/netology-university/drone-cafe)
 Онлайн-версия: [https://adaptedbee-drone-cafe.herokuapp.com/](https://adaptedbee-drone-cafe.herokuapp.com/)
+
+Сервер: Node.js, Express 4, MongoDB 3.2, Mongoose, Socket.io.
+Клиент: HTML5, CSS3, Materialize, AngularJS 1.6.
 
 ## Запуск приложения
 
