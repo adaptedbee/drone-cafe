@@ -84,7 +84,7 @@ router.route('/clients')
       if (err) {
         res.send(err);
       } else {
-        res.json({ message: 'Client created!' });
+        res.json(newClient);
       }
     });
   });

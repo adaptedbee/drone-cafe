@@ -8,6 +8,7 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
   $scope.openLoginPopup = function(){
     $('#loginPopup').modal();
     $('#loginPopup').modal('open');
+    $scope.user = {};
   };
 
   $scope.logIn = function(user) {
@@ -17,25 +18,23 @@ droneCafeApp.controller('UserDashboardCtrl', function($scope, UserDashboardServi
       $scope.user = user;
 
       UserDashboardService.getUserInfo($scope.user).then(function(data) {
-          // console.log(data.data);
 
           if(data.data.length == 0) {
             $scope.user.balance = 100;
+
             UserDashboardService.createNewUser($scope.user).then(function(data) {
-                // console.log(data.data);
+                $scope.user = data.data;
+                // console.log('new user created');
             });
           } else {
-            $scope.users = data.data;
-            $scope.user = $scope.users[0];
+            $scope.user = data.data[0];
+
+            UserDashboardService.getUserOrders($scope.user._id).then(function(data) {
+                if(data.data.length !== undefined) {
+                  $scope.userOrderedDishes = data.data;
+                };
+            });
           }
-
-          return UserDashboardService.getUserOrders($scope.user._id)
-      }).then(function(data) {
-
-          // console.log(data.data);
-          if(data.data.length !== undefined) {
-            $scope.userOrderedDishes = data.data;
-          };
       });
   };
 
